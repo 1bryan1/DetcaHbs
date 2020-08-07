@@ -5,6 +5,7 @@ module.exports = {
         host: "localhost",
         user: "root",
         password: "",
-        database: 'detca_db'
+        port: '3308',
+        database: "detca_db"
     }
-}
+};
