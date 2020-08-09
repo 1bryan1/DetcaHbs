@@ -58,5 +58,5 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id_usuario, done) => { //Se hace una consulta en la BD si el new user existe
     const rows = await pool.query("SELECT * FROM tbl_usuario Where id_usuario = ?", [id_usuario]); //consulta si la bd si es igual al dato siguiente
-    done(null, rows[0]); //Objeto desde la fila 0
+     done(null, rows[0]); //Objeto desde la fila 0
 });

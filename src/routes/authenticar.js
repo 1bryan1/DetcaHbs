@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const passport = require('passport');
-const {isloggedIn} = require("../lib/auth");
+const {isloggedIn, isNotloggedIn} = require("../lib/auth");
 
-router.get('/signup', (req, res) => {
+router.get('/signup', isNotloggedIn,(req, res) => {
     res.render('auth/signup')
 });
 
@@ -19,7 +19,6 @@ router.get("/signin", (req, res) => { //renderiza desde el get signin
 });
 
 router.post("/signin", (req, res, next) => {
-
     passport.authenticate("local.signin", { //Validar el inicio session
         successRedirect: "/profile", //usuario loggeado correctamente pueda ser redireccionado a la siguiente pestaña
         failureRedirect: "/signin", //Sino se loguea correctamente , me regrese nuevamente al login 
@@ -27,15 +26,17 @@ router.post("/signin", (req, res, next) => {
     })(req, res, next);
 });
 
+
 //cerrar sesion 
-router.get("/logout", isloggedIn, (req, res) => {
+
+router.get("/logout" , isloggedIn, (req, res) => {
     req.logOut();
-    res.redirect("/signin");
-
+    res.redirect('/signin');
+        
 });
-
+    
 //Vista del perfil cuando inicie sesion
-router.get('/profile', (req, res) => {
+router.get('/profile', isloggedIn,(req, res) => {
     res.render('profile')
 });
 

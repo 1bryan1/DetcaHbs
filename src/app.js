@@ -86,9 +86,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json()); //Recivir datos de tipo string
 
 app.use(session({
+    
     secret: 'autosecretdetcalol',
-    resave: false,
     saveUninitialized: false,
+    resave: false,
     store: new MySQLStore(database)
 }));
 app.use(flash());
@@ -111,7 +112,9 @@ app.use((req, res, next) => { // Mensajes para el ussario en el login
 //Routes
 app.use(require('./routes'));
 app.use(require('./routes/authenticar'));
-//app.use('/Crud', require('./routes/Crud'));
+//app.use(require('./routes/crud'));
+app.use(require('./routes/crud'));
+app.use('/Cruds', require('./routes/crud'));
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));

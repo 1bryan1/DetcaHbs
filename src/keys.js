@@ -6,6 +6,6 @@ module.exports = {
         user: "root",
         password: "",
         port: '3308',
-        database: "detca_db"
+        database: "sistemadb"
     }
 };
