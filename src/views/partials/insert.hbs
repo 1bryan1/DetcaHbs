@@ -1,0 +1,78 @@
+<ul class="nav justify-content-end" id="footer-ul">
+    <li class="nav-item">
+    </li>
+    <li class="nav-item" id="GowPlay">
+    </li>
+</ul>
+
+{{!-- Modal agregar  --}}
+
+<!-- Modal -->
+<div class="modal fade" id="agregar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Agregar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card-body">
+                    <form action="/Cruds/addUser" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="apellido" placeholder="Apellido" autofocus>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="telefono" placeholder="Telefono">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="correo" placeholder=" Correo" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="contraseña_us" placeholder=" password" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block"> Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- <div class="col-md-5">
+    <div class="card-body">
+        <form action="/insert" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Nombre" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+                <input type="text" name="address" placeholder="Apellido" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone" placeholder="Telefono" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone" placeholder="Correo" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="phone" placeholder="Contraseña" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Guardar
+            </button>
+        </form>
+    </div>
+</div> --}}

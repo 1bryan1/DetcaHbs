@@ -113,18 +113,19 @@ app.use((req, res, next) => { // Mensajes para el ussario en el login
 app.use(require('./routes'));
 app.use(require('./routes/authenticar'));
 //app.use(require('./routes/crud'));
-app.use(require('./routes/crud'));
 app.use('/Cruds', require('./routes/crud'));
+app.use(require('./routes/crud'));
+
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Iniciando Servidor
-// app.listen(app.get('port'), () => {
-//     console.log('Servidor Conectado', app.get('port'));
+ app.listen(app.get('port'), () => {
+     console.log('Servidor Conectado', app.get('port'));
+ });
+
+// server.listen(4000, () => {
+//     console.log("Conexion en el puerto", 4000); //server ejecutando.
+
 // });
-
-server.listen(4000, () => {
-    console.log("Conexion en el puerto", 4000); //server ejecutando.
-
-});
