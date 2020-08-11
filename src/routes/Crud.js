@@ -3,7 +3,6 @@ const router = express.Router();
 const passport = require('../lib/passport');
 const helpers = require("../lib/helpers");
 
-
 const pool = require('../database');
 const { isloggedIn} = require('../lib/auth');
 

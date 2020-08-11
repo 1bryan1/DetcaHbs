@@ -10,6 +10,8 @@ const session = require("express-session");
 const MySQLStore = require("express-mysql-session");
 const { database } = require("./keys");
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 
 //Inicializando
@@ -17,6 +19,9 @@ const app = express();
 const server = http.createServer(app); //Se llaman los modulos del servidor requerido
 const io = socketIo.listen(server); //Usamos el objeto websockets para que se inicie en el server
 require('./lib/passport');
+
+//Password y correo
+
 
 //Arduino
 //Websockets actualizando
@@ -27,6 +32,7 @@ io.on('connection', function (socket) {
 });
 
 const Serialport = require('serialport');
+const { text } = require('express');
 const Readline = Serialport.parsers.Readline;
 
 const port = new Serialport('COM3', {
@@ -121,11 +127,11 @@ app.use(require('./routes/crud'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Iniciando Servidor
- app.listen(app.get('port'), () => {
-     console.log('Servidor Conectado', app.get('port'));
- });
+//  app.listen(app.get('port'), () => {
+//      console.log('Servidor Conectado', app.get('port'));
+//  });
 
-// server.listen(4000, () => {
-//     console.log("Conexion en el puerto", 4000); //server ejecutando.
+ server.listen(4000, () => {
+    console.log("Conexion en el puerto", 4000); //server ejecutando.
 
-// });
+});

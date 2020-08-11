@@ -1,8 +1,7 @@
 //Funcion para eliminar los registros 
-(function eliminar() {
-    $("tr td #alert").click(function (e) {
-        var id = $(this).parents("tr").attr("id");
-        e.preventDefault(); // Prevent the href from redirecting directly
+(function() {
+    $("tr td #alert").click(function () {
+        event.preventDefault(); // Prevent the href from redirecting directly
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -12,20 +11,19 @@
         })
 
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Deseas Eliminar este Registro??',
+            text: "No podras revertir este cambio!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'No, cancelar!',
             reverseButtons: true
         }).then((result) => {
             if (result.value) {
                 swalWithBootstrapButtons.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success',
-                    window.location.replace(window.location.origin +"/delete/{{id_usuario}}")
+                    'Eliminado!',
+                    'Tu Registro ha sido eliminado.',
+                    window.location.href = "/delete/{{id_usuario}}"
                     
                 )
             } else if (
@@ -33,11 +31,23 @@
                 result.dismiss === Swal.DismissReason.cancel
             ) {
                 swalWithBootstrapButtons.fire(
-                    'Cancelled',
-                    'Your imaginary file is safe :)',
-                    'error'
+                    'Cancelado',
                 )
             }
         })
     }); 
 })();
+
+
+//     function deleletconfig() {
+
+//         var del = confirm("Are you sure you want to delete this record?");
+//         if (del == true) {
+//             alert("record deleted")
+//             window.location.href = "/edit/{{id_usuario}}";
+//         } else {
+//             alert("Record Not Deleted")
+//         }
+//         return del;
+// };
+   
